@@ -3,7 +3,6 @@
     this.noteList = noteList;
     this.noteListViewConstructor = noteListView;
     this.noteList.store('Favourite drink: seltzer');
-
     this.noteListView = new this.noteListViewConstructor(this.noteList);
   };
 
