@@ -1,14 +1,14 @@
 (function(exports){
-
-  function NoteController(noteList) {
-    noteList.store("Favourite drink: seltzer");
-    this.noteListView = new NoteListView(noteList)
+  function NoteController(noteList){
+    this.noteList = noteList;
+    this.noteList.store('Favourite drink: seltzer');
+    this.noteListView = new NoteListView(this.noteList);
   };
 
   NoteController.prototype = {
-    render: function(){
-      var element = document.getElementById('app');
-      element.innerHTML = this.noteListView.createHTML();
+    render: function () {
+      var app = document.getElementById('app');
+      app.innerHTML = this.noteListView.createHTML();
     }
   }
   exports.NoteController = NoteController;
