@@ -61,7 +61,36 @@ window.onload = function(){
       assert.isTrue("renders HTML", app.innerHTML.includes('Favourite drink: seltzer'));
     }
     rendersOneNoteListView();
+
+    function callsnoteListStore(){
+        var counter = 0;
+        var noteListDouble = {
+          store: function(text) {
+            counter ++;
+          }
+        }
+        var noteController = new NoteController(noteListDouble);
+        assert.isTrue("calls noteList.store()", counter === 1);
+    }
+    callsnoteListStore();
+
+    function makesNoteListView(){
+        var noteListDouble = { store: function () {} };
+        function noteListViewDouble () {};
+        noteListViewDouble.prototype = {
+          createHTML: function() {
+            return "yas!"
+          }
+        };
+        var noteController = new NoteController(noteListDouble, noteListViewDouble);
+        noteController.render();
+        assert.isTrue("notecontroller.render calls createhtml on notelistview and puts the output into #app",
+                      app.innerHTML.includes('yas!'));
+    }
+    makesNoteListView();
   })(this);
 
-  //  this is our legit tests.
+  // 1. note controller constructer calls notelist.store with 'favourite drink...'
+  // 2. note controller makes a new notelistview, passing in the noteList
+  // 3. notecontroller.render calls createhtml on notelistview and puts the output into #app
 }

@@ -1,8 +1,10 @@
 (function(exports){
-  function NoteController(noteList){
+  function NoteController(noteList, noteListView = NoteListView){
     this.noteList = noteList;
+    this.noteListViewConstructor = noteListView;
     this.noteList.store('Favourite drink: seltzer');
-    this.noteListView = new NoteListView(this.noteList);
+
+    this.noteListView = new this.noteListViewConstructor(this.noteList);
   };
 
   NoteController.prototype = {
