@@ -59,7 +59,7 @@ window.onload = function(){
       noteController.render();
       var app = document.getElementById('app');
       assert.isTrue("renders HTML", app.innerHTML.includes('my note'));
-      assert.isTrue("renders HTML", app.innerHTML.includes('Favourite drink: seltzer'));
+      assert.isTrue("renders HTML", app.innerHTML.includes('Favourite drink: sel'));
     }
     rendersOneNoteListView2();
 
@@ -68,7 +68,7 @@ window.onload = function(){
       var noteController = new NoteController(noteList);
       noteController.render();
       var app = document.getElementById('app');
-      assert.isTrue("renders HTML", app.innerHTML.includes('Favourite drink: seltzer'));
+      assert.isTrue("renders HTML", app.innerHTML.includes('Favourite drink: sel'));
     }
     rendersOneNoteListView();
 

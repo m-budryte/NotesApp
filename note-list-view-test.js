@@ -26,4 +26,15 @@
   }
 
   testTwoItemHTMLList();
+
+  function testListWithLongNotes() {
+    var noteList = new NoteList();
+    noteList.store("note with 21 letters!");
+    var noteListView = new NoteListView(noteList);
+    assert.isTrue("displays first 20 characters of note",
+                   noteListView.createHTML().includes('note with 21 letters'));
+    assert.isTrue("does not display 21st character",
+                   !noteListView.createHTML().includes('note with 21 letters!'));
+  }
+  testListWithLongNotes();
 })(this);

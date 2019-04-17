@@ -9,7 +9,7 @@
 
     if (this.noteList.show().length !== 0) {
       this.noteList.show().forEach(function(note) {
-        string += `<li><div>${note.text}</div></li>`;
+        string += `<li><div>${note.text.substring(0, 20)}</div></li>`;
       });
     };
 
