@@ -38,3 +38,29 @@
   }
   testListWithLongNotes();
 })(this);
+
+(function(){
+  function createsAUniqueIDForANote() {
+    var note = new Note('my note');
+    note.setID(99);
+    assert.isTrue("sets an ID for a note", note.getID() === 99);
+  }
+  createsAUniqueIDForANote();
+})();
+
+(function(exports){
+  function createsAUniqueIDForANoteInANoteList() {
+    var noteList = new NoteList();
+    noteList.store("My note!");
+    assert.isTrue("creates an id of 0 for the first note", noteList.show()[0].getID() === 0)
+  }
+  createsAUniqueIDForANoteInANoteList();
+
+  function createsAUniqueIDForTheSecondNoteInANoteList() {
+    var noteList = new NoteList();
+    noteList.store("My note!");
+    noteList.store("Another note!");
+    assert.isTrue("creates an id of 1 for the second note", noteList.show()[1].getID() === 1);
+  }
+  createsAUniqueIDForTheSecondNoteInANoteList();
+})(this);
