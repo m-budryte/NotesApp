@@ -100,7 +100,16 @@ window.onload = function(){
     makesNoteListView();
   })(this);
 
-  // 1. note controller constructer calls notelist.store with 'favourite drink...'
-  // 2. note controller makes a new notelistview, passing in the noteList
-  // 3. notecontroller.render calls createhtml on notelistview and puts the output into #app
+(function(exports){
+  function returnsSingleNoteHTMLString(){
+    var noteDouble = {
+      noteContent: function () {
+        return "Favourite drink: seltzer";
+      }
+    };
+    var singleNoteView = new SingleNoteView(noteDouble);
+    assert.isTrue("returns a string of HTML that represents the note model", singleNoteView.createHTML() === "<div>Favourite drink: seltzer</div>")
+  }
+  returnsSingleNoteHTMLString();
+})(this);
 }
